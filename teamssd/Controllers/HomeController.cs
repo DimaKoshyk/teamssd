@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using teamssd.Controllers.Abstract;
+using teamssd.Data.Entities;
 using teamssd.Models;
 
 namespace teamssd.Controllers
@@ -13,10 +15,7 @@ namespace teamssd.Controllers
 
             model.Chanels = CurrentUser.Chanels.ToList();
             var firstChanel = model.Chanels.FirstOrDefault();
-            if (firstChanel != null)
-            {
-                model.NewsOfFirstChanel = firstChanel.News.ToList();
-            }
+            model.NewsOfFirstChanel = firstChanel?.News.ToList() ?? new List<News>();
 
             return View(model);
         }
