@@ -2,19 +2,19 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using teamssd.Controllers.Abstract;
 using teamssd.Data;
 using teamssd.Data.Entities;
 
 namespace teamssd.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController : GeneralController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: News
         public ActionResult Index()
         {
-            var newses = db.Newses.Include(n => n.Chanel);
+            var newses = Db.Newses.Include(n => n.Chanel);
             return View(newses.ToList());
         }
 
@@ -25,7 +25,7 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newses.Find(id);
+            News news = Db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -36,7 +36,7 @@ namespace teamssd.Controllers
         // GET: News/Create
         public ActionResult Create()
         {
-            ViewBag.ChanelId = new SelectList(db.Chanels, "Id", "Name");
+            ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name");
             return View();
         }
 
@@ -49,12 +49,12 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Newses.Add(news);
-                db.SaveChanges();
+                Db.Newses.Add(news);
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ChanelId = new SelectList(db.Chanels, "Id", "Name", news.ChanelId);
+            ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name", news.ChanelId);
             return View(news);
         }
 
@@ -65,12 +65,12 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newses.Find(id);
+            News news = Db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ChanelId = new SelectList(db.Chanels, "Id", "Name", news.ChanelId);
+            ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name", news.ChanelId);
             return View(news);
         }
 
@@ -83,11 +83,11 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(news).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(news).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ChanelId = new SelectList(db.Chanels, "Id", "Name", news.ChanelId);
+            ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name", news.ChanelId);
             return View(news);
         }
 
@@ -98,7 +98,7 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newses.Find(id);
+            News news = Db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -111,9 +111,9 @@ namespace teamssd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            News news = db.Newses.Find(id);
-            db.Newses.Remove(news);
-            db.SaveChanges();
+            News news = Db.Newses.Find(id);
+            Db.Newses.Remove(news);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -121,7 +121,7 @@ namespace teamssd.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Db.Dispose();
             }
             base.Dispose(disposing);
         }

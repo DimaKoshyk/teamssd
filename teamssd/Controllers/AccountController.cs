@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using teamssd.Controllers.Abstract;
 using teamssd.Data.Entities;
 using teamssd.Models;
 
@@ -66,7 +67,7 @@ namespace teamssd.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
