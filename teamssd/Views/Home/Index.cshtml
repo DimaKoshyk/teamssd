@@ -24,15 +24,19 @@
          </div>
         </div>
     <div class="col-md-9">
-        @foreach (var news in Model.NewsOfFirstChanel)
+        @if (Model.NewsOfFirstChanel != null)
         {
-            <div class="jumbotron">
-                <h2>@news.Title</h2>
+            foreach (var news in Model.NewsOfFirstChanel)
+             {
+                 <div class="jumbotron">
+                     <h2>@news.Title</h2>
 
-                <p>@news.Text</p>
+                     <p>@news.Text</p>
 
-                <p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a></p>
-            </div>
+                     <p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a>
+                     </p>
+                 </div>
+             }
         }
     </div>
 </div>

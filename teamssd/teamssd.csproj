@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\ripples.css" />
     <Content Include="Content\ripples.min.css" />
     <Content Include="favicon.ico" />
