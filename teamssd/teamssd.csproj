@@ -203,6 +203,7 @@
     <Compile Include="Data\Entities\View.cs" />
     <Compile Include="Data\Entities\News.cs" />
     <Compile Include="Data\Enum\ChanelType.cs" />
+    <Compile Include="Filters\HandleAuth.cs" />
     <Compile Include="GeneralConts.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,6 +224,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\ripples.css" />
     <Content Include="Content\ripples.min.css" />
     <Content Include="favicon.ico" />
