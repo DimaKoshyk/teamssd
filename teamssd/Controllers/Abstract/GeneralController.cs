@@ -36,12 +36,13 @@ namespace teamssd.Controllers.Abstract
             {
                 CurrentUser = Db.Users.FirstOrDefault(x => x.UserName == identity.Name);
             }
-            base.Initialize(rc);
 
             if (CurrentUser != null)
             {
                 ViewBag.CurrentUser = CurrentUser;
             }
+
+            base.Initialize(rc);
         }
     }
 }
