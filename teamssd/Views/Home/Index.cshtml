@@ -1,12 +1,38 @@
-﻿@{
+﻿@model teamssd.Models.DashboardViewModels
+
+@{
     ViewBag.Title = "Головна";
+
 }
 
 <div class="row">
     <div class="col-md-3">
+        <div class="list-group">
+            @foreach (var chanel in Model.Chanels)
+            {
+                <div class="list-group-item">
+                    <div class="row-picture">
+                        <img class="circle" src="http://lorempixel.com/56/56/people/1" alt="icon">
+                    </div>
+                    <div class="row-content">
+                        <h4 class="list-group-item-heading">@chanel.Name</h4>
 
-    </div>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus</p>
+                    </div>
+                </div>
+            }
+         </div>
+        </div>
     <div class="col-md-9">
+        @foreach (var news in Model.NewsOfFirstChanel)
+        {
+            <div class="jumbotron">
+                <h2>@news.Title</h2>
 
+                <p>@news.Text</p>
+
+                <p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a></p>
+            </div>
+        }
     </div>
 </div>

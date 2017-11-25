@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using teamssd.Controllers.Abstract;
+using teamssd.Models;
 
 namespace teamssd.Controllers
 {
@@ -11,7 +9,16 @@ namespace teamssd.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new DashboardViewModels();
+
+            model.Chanels = CurrentUser.Chanels.ToList();
+            var firstChanel = model.Chanels.FirstOrDefault();
+            if (firstChanel != null)
+            {
+                model.NewsOfFirstChanel = firstChanel.News.ToList();
+            }
+
+            return View(model);
         }
 
         public ActionResult About()
