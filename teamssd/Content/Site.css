@@ -108,3 +108,29 @@ body {
 .btn-color-text {
     color: white;
 }
+
+.myClass {
+    position: absolute;
+    top: 40px;
+    color: #D2D2D2;
+}
+
+.search-chanel {
+    padding-left: 20px;
+}
+
+.more-chanel {
+    position: absolute;
+    cursor: pointer
+}
+
+.get-news-chanel {
+    cursor: pointer;
+    color: red;
+}
+
+.list-group .list-group-item .list-group-item-heading {
+    color: red;
+}
+
+

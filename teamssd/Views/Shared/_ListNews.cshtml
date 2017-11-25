@@ -1,0 +1,16 @@
+﻿@model List<teamssd.Data.Entities.News>
+
+@if (Model != null)
+{
+    foreach (var news in Model)
+    {
+        <div class="jumbotron">
+            <h2>@news.Title</h2>
+
+            <p>@news.Text</p>
+
+            <p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a>
+            </p>
+        </div>
+    }
+}
