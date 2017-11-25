@@ -202,6 +202,7 @@
     <Compile Include="Data\Entities\Like.cs" />
     <Compile Include="Data\Entities\View.cs" />
     <Compile Include="Data\Entities\News.cs" />
+    <Compile Include="Data\Enum\ChanelType.cs" />
     <Compile Include="GeneralConts.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
