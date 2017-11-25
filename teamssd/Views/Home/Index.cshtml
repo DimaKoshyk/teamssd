@@ -1,8 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using teamssd.Models
+@model LoginViewModel
+@{
+    //ViewBag.Title = "Home Page";
+    ViewBag.Title = "Log in";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
@@ -27,5 +30,38 @@
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>*@
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="" style="height: 200px;">
+                
+            </div>
+        </div>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+        {
+            //<h2 class="form-signin-heading">Сторінка входу</h2>
+            @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Електронна адреса" })
+            @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
+
+            @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль" })
+            @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+
+            @*<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <label for="inputPassword" class="sr-only">Password</label>*@
+            @*<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">*@
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Вхід</button>
+            <a href="@Url.Action("Register", "Account")">Реєстрація</a>
+        }
     </div>
 </div>
