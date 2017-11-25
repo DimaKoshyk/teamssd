@@ -21,6 +21,9 @@ namespace teamssd.Data
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<News> Newses { get; set; }
         public virtual DbSet<View> Views { get; set; }
+        public virtual DbSet<InterestNews> InterestNews { get; set; }
+        public virtual DbSet<RelevantNews> RelevantNews { get; set; }
+        public virtual DbSet<UsefulNews> UsefulNews { get; set; }
     
 
         #endregion
@@ -51,6 +54,9 @@ namespace teamssd.Data
             modelBuilder.Configurations.Add(new LikeConfiguration());
             modelBuilder.Configurations.Add(new NewsConfiguration());
             modelBuilder.Configurations.Add(new ViewConfiguration());
+            modelBuilder.Configurations.Add(new InterestNewsConfiguration());
+            modelBuilder.Configurations.Add(new RelevantNewsConfiguration());
+            modelBuilder.Configurations.Add(new UsefulNewsConfiguration());
         
 
             base.OnModelCreating(modelBuilder);

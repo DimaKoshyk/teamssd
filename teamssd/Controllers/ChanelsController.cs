@@ -1,10 +1,12 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using teamssd.Controllers.Abstract;
 using teamssd.Data;
 using teamssd.Data.Entities;
+using teamssd.Models;
 
 namespace teamssd.Controllers
 {
@@ -73,6 +75,8 @@ namespace teamssd.Controllers
             ViewBag.OwnerId = new SelectList(Db.Users, "Id", "FirstName", chanel.OwnerId);
             return View(chanel);
         }
+
+        
 
         // POST: Chanels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

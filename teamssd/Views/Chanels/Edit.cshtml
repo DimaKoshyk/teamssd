@@ -45,22 +45,36 @@
                         @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OwnerId, "OwnerId", htmlAttributes: new { @class = "col-md-12" })
+                
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.ImageFileBase, htmlAttributes: new { @class = "col-md-12" })
                     <div class="col-md-12">
-                        @Html.DropDownList("OwnerId", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
+                        <input type="file" id="inputFile4" multiple="">
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.ImageFileBase, new { htmlAttributes = new { @class = "form-control", placeholder = "виберіть файл" } })
+                            <input type="text" readonly="" class="form-control" >
+                            <span class="input-group-btn input-group-sm">
+                                <button type="button" class="btn btn-fab btn-fab-mini">
+                                    <i class="material-icons">attach_file</i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OwnerId, "OwnerId", htmlAttributes: new { @class = "col-md-12" })
+                        <div class="col-md-12">
+                            @Html.DropDownList("OwnerId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Зберегти" class="btn btn-raised btn-success" />
+                            @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-raised btn-default" })
+                        </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Зберегти" class="btn btn-raised btn-success" />
-                        @Html.ActionLink("Назад", "Index",null, new {@class= "btn btn-raised btn-default" })
-                    </div>
-                </div>
-            </div>
         }
     </div>
 </div>

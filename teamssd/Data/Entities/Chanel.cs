@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using Payzaar.Core.Data.Abstract;
 using teamssd.Data.Enum;
 
@@ -12,6 +11,11 @@ namespace teamssd.Data.Entities
         public string Name { get; set; }
         [DisplayName("Опис")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Avatar
+        /// </summary>
+        public string Img { get; set; }
 
         public ChanelType ChanelType { get; set; }
         public string Location { get; set; }

@@ -189,6 +189,9 @@
     <Compile Include="Data\Abstract\IEntity.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\Configurations\InterestNewsConfiguration.cs" />
+    <Compile Include="Data\Configurations\RelevantNewsConfiguration.cs" />
+    <Compile Include="Data\Configurations\UsefulNewsConfiguration.cs" />
     <Compile Include="Data\Configurations\ViewConfiguration.cs" />
     <Compile Include="Data\Configurations\NewsConfiguration.cs" />
     <Compile Include="Data\Configurations\LikeConfiguration.cs" />
@@ -200,6 +203,9 @@
     <Compile Include="Data\Entities\Chanel.cs" />
     <Compile Include="Data\Entities\Follower.cs" />
     <Compile Include="Data\Entities\Like.cs" />
+    <Compile Include="Data\Entities\UsefulNews.cs" />
+    <Compile Include="Data\Entities\RelevantNews.cs" />
+    <Compile Include="Data\Entities\InterestNews.cs" />
     <Compile Include="Data\Entities\View.cs" />
     <Compile Include="Data\Entities\News.cs" />
     <Compile Include="Data\Enum\ChanelType.cs" />
