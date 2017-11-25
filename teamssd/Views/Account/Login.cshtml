@@ -3,34 +3,41 @@
 @{
     ViewBag.Title = "Log in";
 }
+<div class="panel-body panel">
 
-<div class="container">
-    <section id="loginForm">
-            
+    <div class="text-center" style="height: 200px;">
+        <img src="/Content/Images/logo.png" style="width: 200px;">
+    </div>
     
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+    <div class="container">
+        <section id="loginForm">
+
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin",style= "margin-right: 430px;", role = "form" }))
             {
-                <h2 class="form-signin-heading">Сторінка входу</h2>
+                @*<h2 class="form-signin-heading">Сторінка входу</h2>*@
                 @Html.AntiForgeryToken()
                 @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
 
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Електронна адреса" })
                 @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
-    
+
                 @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Пароль" })
                 @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
-    
+
                 @*<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                <label for="inputPassword" class="sr-only">Password</label>*@
+                    <label for="inputPassword" class="sr-only">Password</label>*@
                 @*<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">*@
-   
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Вхід</button>
+
+                @*<button class="btn btn-lg btn-primary btn-block" style="background-color: #4267b2" type="submit">Вхід</button>*@
+                    <button class="btn-login-vxid btn-block btn-color-text" type="submit">Вхід</button>
                 <a href="@Url.Action("Register", "Account")">Реєстрація</a>
             }
-                 
-    </section>
+        </section>
+    </div>
 </div>
+
 
 @*<section id="socialLoginForm">
     @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
