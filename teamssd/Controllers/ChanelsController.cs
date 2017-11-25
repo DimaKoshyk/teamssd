@@ -117,6 +117,7 @@ namespace teamssd.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public ActionResult GetNewsByChanel(int id)
         {
             var news = Db.Chanels.Find(id)?.News.ToList();
