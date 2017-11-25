@@ -9,6 +9,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
 
 </head>
 <body>
@@ -22,13 +24,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/Content/Images/logo.png" style="width: 45px; padding-top: 7px;"/>
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Content/Images/logo.png" style="width: 45px; padding-top: 7px;" />
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Канали", "Index", "Chanels")</li>
+                    <li>@Html.ActionLink("Новини", "Index", "News")</li>
+                    <li>@*@Html.ActionLink("Контакт", "Contact", "Home")*@</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -40,7 +44,6 @@
     @RenderBody()
 </div>
 
-@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
 </body>
