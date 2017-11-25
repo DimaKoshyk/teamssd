@@ -2,19 +2,19 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using teamssd.Controllers.Abstract;
 using teamssd.Data;
 using teamssd.Data.Entities;
 
 namespace teamssd.Controllers
 {
-    public class ChanelsController : Controller
+    public class ChanelsController : GeneralController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Chanels
         public ActionResult Index()
         {
-            var chanels = db.Chanels.Include(c => c.Owner);
+            var chanels = Db.Chanels.Include(c => c.Owner);
             return View(chanels.ToList());
         }
 
@@ -25,7 +25,7 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chanel chanel = db.Chanels.Find(id);
+            Chanel chanel = Db.Chanels.Find(id);
             if (chanel == null)
             {
                 return HttpNotFound();
@@ -36,7 +36,7 @@ namespace teamssd.Controllers
         // GET: Chanels/Create
         public ActionResult Create()
         {
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.OwnerId = new SelectList(Db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -49,12 +49,12 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Chanels.Add(chanel);
-                db.SaveChanges();
+                Db.Chanels.Add(chanel);
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "FirstName", chanel.OwnerId);
+            ViewBag.OwnerId = new SelectList(Db.Users, "Id", "FirstName", chanel.OwnerId);
             return View(chanel);
         }
 
@@ -65,12 +65,12 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chanel chanel = db.Chanels.Find(id);
+            Chanel chanel = Db.Chanels.Find(id);
             if (chanel == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "FirstName", chanel.OwnerId);
+            ViewBag.OwnerId = new SelectList(Db.Users, "Id", "FirstName", chanel.OwnerId);
             return View(chanel);
         }
 
@@ -83,11 +83,11 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(chanel).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(chanel).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OwnerId = new SelectList(db.Users, "Id", "FirstName", chanel.OwnerId);
+            ViewBag.OwnerId = new SelectList(Db.Users, "Id", "FirstName", chanel.OwnerId);
             return View(chanel);
         }
 
@@ -98,7 +98,7 @@ namespace teamssd.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chanel chanel = db.Chanels.Find(id);
+            Chanel chanel = Db.Chanels.Find(id);
             if (chanel == null)
             {
                 return HttpNotFound();
@@ -111,9 +111,9 @@ namespace teamssd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Chanel chanel = db.Chanels.Find(id);
-            db.Chanels.Remove(chanel);
-            db.SaveChanges();
+            Chanel chanel = Db.Chanels.Find(id);
+            Db.Chanels.Remove(chanel);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -121,7 +121,7 @@ namespace teamssd.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Db.Dispose();
             }
             base.Dispose(disposing);
         }
