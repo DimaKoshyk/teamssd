@@ -186,11 +186,18 @@
     <Compile Include="Data\Abstract\IEntity.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\Configuration.cs" />
+    <Compile Include="Data\Configurations\ViewConfiguration.cs" />
+    <Compile Include="Data\Configurations\NewsConfiguration.cs" />
+    <Compile Include="Data\Configurations\LikeConfiguration.cs" />
+    <Compile Include="Data\Configurations\FollowerConfiguration.cs" />
+    <Compile Include="Data\Configurations\ChanelConfiguration.cs" />
+    <Compile Include="Data\Configurations\ApplicationUserConfiguration.cs" />
     <Compile Include="Data\CreateIfNotExistWithSeed.cs" />
     <Compile Include="Data\Entities\ApplicationUser.cs" />
     <Compile Include="Data\Entities\Chanel.cs" />
     <Compile Include="Data\Entities\Follower.cs" />
     <Compile Include="Data\Entities\Like.cs" />
+    <Compile Include="Data\Entities\View.cs" />
     <Compile Include="Data\Entities\News.cs" />
     <Compile Include="GeneralConts.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\Configuration\" />
     <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>

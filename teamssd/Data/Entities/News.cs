@@ -11,12 +11,12 @@ namespace teamssd.Data.Entities
         public string Video { get; set; }
         public string UrlRef { get; set; }
 
-        public ICollection<ApplicationUser> Viewers { get; set; }
-
-        public string ApplicationUserId { get; set; }
-        public virtual ApplicationUser Owner { get; set; }
+        //public string OwnerId { get; set; }
+        //public virtual ApplicationUser Owner { get; set; }
 
         public int ChanelId { get; set; }
         public virtual Chanel Chanel { get; set; }
+
+        public ICollection<View> Viewers { get; set; }
     }
 }

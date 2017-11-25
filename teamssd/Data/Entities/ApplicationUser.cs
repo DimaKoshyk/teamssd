@@ -17,7 +17,10 @@ namespace teamssd.Data.Entities
 
         public bool IsDeleted { get; set; }
 
-        public ICollection<News> ViewedNews { get; set; }
+        public virtual ICollection<View> ViewedNews { get; set; }
+        public virtual ICollection<Chanel> Chanels { get; set; }
+
+        public virtual ICollection<Follower> FollowedChanels { get; set; }
 
         #region Identity methods
 
