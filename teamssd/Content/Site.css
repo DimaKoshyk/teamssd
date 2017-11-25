@@ -63,3 +63,30 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.form-horizontal label {
+    text-align: left;
+    color: #000000;
+    font-weight: bold;
+
+}
+
+.navbar.navbar-inverse {
+    background-color: #4267b2;
+}
+
+.panel-title {
+    font-size: 30px;
+}
+
+.btn.btn-raised.btn-success, .input-group-btn .btn.btn-raised.btn-success, .btn.btn-fab.btn-success, .input-group-btn .btn.btn-fab.btn-success, .btn-group-raised .btn.btn-success, .btn-group-raised .input-group-btn .btn.btn-success {
+    background-color: #009688;
+}
+
+.btn.btn-raised:not(.btn-link):hover.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):hover.btn-success, .btn-group-raised .btn:not(.btn-link):hover.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):hover.btn-success, .btn.btn-raised:not(.btn-link):focus.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):focus.btn-success, .btn-group-raised .btn:not(.btn-link):focus.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):focus.btn-success, .btn.btn-raised:not(.btn-link).active.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link).active.btn-success, .btn-group-raised .btn:not(.btn-link).active.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link).active.btn-success, .btn.btn-raised:not(.btn-link):active.btn-success, .input-group-btn .btn.btn-raised:not(.btn-link):active.btn-success, .btn-group-raised .btn:not(.btn-link):active.btn-success, .btn-group-raised .input-group-btn .btn:not(.btn-link):active.btn-success {
+    background-color: #009688;
+}
+
+.form-group .form-control {
+    font-size: 20px;
+}
