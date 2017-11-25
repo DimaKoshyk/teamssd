@@ -102,4 +102,3 @@ C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\bin\Microsof
 C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.dll
 C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.pdb
-C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache
