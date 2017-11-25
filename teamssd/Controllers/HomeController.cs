@@ -17,7 +17,7 @@ namespace teamssd.Controllers
         {
             ViewBag.Message = "Your application description page.";
             //for test
-            var users = Db.Views.ToList();
+            var usersQ = Db.Views.ToList();
             return View();
         }
 
