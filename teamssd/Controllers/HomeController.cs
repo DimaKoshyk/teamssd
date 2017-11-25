@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace teamssd.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : GeneralController
     {
         public ActionResult Index()
         {
@@ -16,7 +16,8 @@ namespace teamssd.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            //for test
+            var users = Db.Users.ToList();
             return View();
         }
 

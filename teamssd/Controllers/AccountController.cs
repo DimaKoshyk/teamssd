@@ -14,7 +14,7 @@ using teamssd.Models;
 namespace teamssd.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : GeneralController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
