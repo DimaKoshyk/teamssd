@@ -117,6 +117,14 @@ namespace teamssd.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult GetNewsByChanel(int id)
+        {
+            var news = Db.Chanels.Find(id)?.News.ToList();
+
+            return PartialView("_ListNews", news);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
