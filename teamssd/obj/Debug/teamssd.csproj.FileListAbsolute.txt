@@ -216,7 +216,6 @@ C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\System.Web.WebPages.Razor.xml
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.pdb
 C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache

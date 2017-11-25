@@ -9,8 +9,9 @@
 
     <div class="col-md-12">
         <h4 class="text-center">Створення нового користувача </h4>
+        <hr/>
         <div class="col-md-4">
-            <img src="/Content/Images/logo.png" style="width: 200px; padding-top: 55px;">
+            <img src="/Content/Images/logo.png" style="width: 200px; padding-top: 45px;">
         </div>
         <div class="col-md-8">
 
@@ -18,27 +19,40 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary("", new {@class = "text-danger"})
+                @*@Html.LabelFor(m => m.Email, new { @class = "col-md-offset-1 col-md-2" })*@
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+                    <div class="col-md-offset-1 col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", placeholder ="Пошта"})
+                    </div>
+                </div>
+                @*@Html.LabelFor(m => m.Password, new { @class = "col-md-offset-1 col-md-2" })*@
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Пароль" })
+                    </div>
+                </div>
+                @*@Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-offset-1 col-md-4" })*@
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "Підтвердіть пароль" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-2 control-label"})
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-9 col-md-3">
+                    @*<div class="col-md-offset-8 col-md-3">
                         <input type="submit" class="btn-login-vxid btn-color-text" value="Реєстрація"/>
+                    </div>*@
+
+                    <div class="col-md-offset-8 col-md-3">
+                        <input type="submit" class="btn-login-vxid btn-color-text" value="Реєстрація"/>
+                    </div>
+                </div>
+                @*<div class="col-md-offset-9 col-md-2">
+                    <a href="@Url.Action("Login", "Account")">Увійти</a>
+                </div>*@
+                <div class="col-md-12">
+                    <div class="col-md-offset-8 col-md-3" style="margin-right: 0px; padding-left: 0px;">Уже зареєстровані?</div>
+                    <div class="col-md-1" style="margin-left: -45px;">
+                        <a href="@Url.Action("Login", "Account")">Увійти</a>
                     </div>
                 </div>
             }
