@@ -25,13 +25,14 @@ namespace teamssd
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/main.js"));
+                      "~/Scripts/jquery.dropdown.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/ripples.css",
                       "~/Content/bootstrap-material-design.css",
                       "~/Content/font-awesome.css",
+                      "~/Content/jquery.dropdown.css",
                       "~/Content/site.css"));
         }
     }

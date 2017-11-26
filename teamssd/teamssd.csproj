@@ -232,6 +232,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\jquery.dropdown.css" />
     <Content Include="Content\ripples.css" />
     <Content Include="Content\ripples.min.css" />
     <Content Include="favicon.ico" />
@@ -264,6 +265,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dropdown.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -328,6 +330,7 @@
     <Content Include="Scripts\ripples.min.js.map" />
     <Content Include="Views\Shared\_ListChanels.cshtml" />
     <Content Include="Views\Shared\_ListNews.cshtml" />
+    <Content Include="Views\Shared\_News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

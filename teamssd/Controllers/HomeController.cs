@@ -11,6 +11,8 @@ namespace teamssd.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name");
+
             var model = new DashboardViewModels();
 
             model.Chanels = CurrentUser.Chanels.ToList();
@@ -19,6 +21,21 @@ namespace teamssd.Controllers
 
             return View(model);
         }
+
+        //public ActionResult MyNews()
+        //{
+            
+        //}
+
+        //public ActionResult News()
+        //{
+
+        //}
+
+        //public ActionResult ViewedNews()
+        //{
+        //    In
+        //}
 
         public ActionResult About()
         {
