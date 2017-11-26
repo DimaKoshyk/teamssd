@@ -135,13 +135,11 @@ C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\Microsoft.DiaSymReader.Na
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\Microsoft.Win32.Primitives.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.AppContext.dll
-C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.Console.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.Diagnostics.StackTrace.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.IO.Compression.dll
-C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\roslyn\System.IO.Pipes.dll
