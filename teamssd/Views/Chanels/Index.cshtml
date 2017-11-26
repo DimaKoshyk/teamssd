@@ -48,7 +48,7 @@
         </div>
 
 
-        <div class="col-lg-8 col-md-8 col-sm-8" style="padding-left: 15px;">
+        <div class="col-lg-7 col-md-7 col-sm-7" style="padding-left: 15px;">
             @foreach (var item in Model)
             {
                 <div class="row" style="height: 38px; padding: 7px 0;font-size: 16px;">
@@ -70,35 +70,56 @@
                             @item.Description
                         </div>
                     </div>
+                    @if (ViewBag.FollowedChanels != null && ViewBag.FollowedChanels == true)
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
+                            @Html.ActionLink("Відписатися", "Follow", new {id = item.Id}, new {@class= "btn btn-raised btn-primary" })
+                        </div>
+                    }
+                    @if (ViewBag.SearchChanels != null && ViewBag.SearchChanels == true)
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
+                            @Html.ActionLink("Підписатися", "Follow", new {id = item.Id}, new {@class= "btn btn-raised btn-primary" })
+                        </div>
+                    }
                 </div>
                 <hr/>
             }
         </div>
-
-        <div class="col-lg-4 col-md-4 text-panel">
-            @foreach (var item in Model)
-            {
-                <div class="row" style="height: 80px; padding: 7px 0;font-size: 16px;">
-                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
-                        @Html.ActionLink("Редагувати", "Edit", new {id = item.Id})
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
-                        @Html.ActionLink("Деталі", "Details", new {id = item.Id})
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
-                        @Html.ActionLink("Видалити", "Delete", new {id = item.Id})
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
-                        @Html.ActionLink("Новини каналу", "Delete", new {id = item.Id})
-                    </div>
-                    @*<div class="col-lg-4 col-md-4 col-sm-4 text-align: center">
+        @if (ViewBag.MyChanels != null && ViewBag.MyChanels == true)
+        {
+            <div class="col-lg-5 col-md-4 text-panel">
+                @foreach (var item in Model)
+                {
+                    <div class="row" style="height: 80px; padding: 7px 0;font-size: 16px;">
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="text-align: center">
+                            @Html.ActionLink("Редагувати", "Edit", new {id = item.Id})
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="text-align: center">
+                            @Html.ActionLink("Деталі", "Details", new {id = item.Id})
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="text-align: center">
+                            @Html.ActionLink("Видалити", "Delete", new {id = item.Id})
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="text-align: center">
+                            @Html.ActionLink("Створити новину", "Create", "News", new { chanelId = item.Id },null)
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2" style="text-align: center">
+                            @Html.ActionLink("Новини каналу", "MyNews", "Home", new { chanelId = item.Id },null)
+                        </div>
+                        @*<div class="col-lg-4 col-md-4 col-sm-4 text-align: center">
                         <a href="@Url.Action("Delete", "Chanels", new {id = item.Id, @class ="" })" role="button" id="">
                             <i class="fa fa-trash-o" aria-hidden="true" style="font-size: 25px;"></i>
                         </a>
                     </div>*@
-                </div>
-            }
-        </div>
+                    </div>
+                }
+            </div>
+        }
+    @if (ViewBag.FollowedChanels != null && ViewBag.FollowedChanels == true)
+    {
+
+    }
     </div>
     <p>
         @Html.ActionLink("Створити", "Create", null, new { @class = "btn btn-raised btn-success pull-right" })

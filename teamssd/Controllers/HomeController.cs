@@ -30,26 +30,27 @@ namespace teamssd.Controllers
 
         private IList<News> GetNews(bool isMy, int? chanelId, int? page)
         {
-            IQueryable<News> news = Db.Newses;
+            IList<News> news = Db.Newses.ToList();
 
             if (isMy)
             {
-                news = news.Where(x => x.Chanel.OwnerId == CurrentUser.Id);
+                news = news.Where(x => x.Chanel.OwnerId == CurrentUser.Id).ToList();
             }
             else
             {
-                news = news.Where(x => x.Chanel.Followers.Any(y => y.OwnerId == CurrentUser.Id));
+                news = news.Where(x => x.Chanel.Followers.Any(y => y.OwnerId == CurrentUser.Id)).ToList();
             }
 
             if (chanelId.HasValue)
             {
-                news = news.Where(x => x.ChanelId == chanelId.Value);
+                news = news.Where(x => x.ChanelId == chanelId.Value).ToList();
             }
 
             var skipNews = GetCountOfNews(page);
 
             return news
-                .OrderByDescending(x => (x.InterestsСount + x.RelevantsСount + x.UsefulsСount) / (DbFunctions.DiffHours(DateTime.Now, x.DateTime) + 1))
+                //.OrderByDescending(x => (x.InterestsСount + x.RelevantsСount + x.UsefulsСount) / (DbFunctions.DiffHours(DateTime.Now, x.DateTime) + 1))
+                .OrderByDescending(x => (x.InterestsСount + x.RelevantsСount + x.UsefulsСount) / ((DateTime.Now - x.DateTime).TotalHours + 1))
                 .Skip(skipNews)
                 .Take(10)
                 .ToList();
@@ -80,7 +81,7 @@ namespace teamssd.Controllers
             ViewBag.MyNews = true;
 
             var model = new DashboardViewModels();
-            model.News = GetNews(true, null, 0);
+            model.News = GetNews(true, chanelId, 0);
 
             return View("Index", model);
         }
