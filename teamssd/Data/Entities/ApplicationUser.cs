@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -9,6 +10,7 @@ namespace teamssd.Data.Entities
 {
     public class ApplicationUser : IdentityUser, IEntity<string>
     {
+        [DisplayName("Ім'я")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
