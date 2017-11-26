@@ -17,7 +17,12 @@ namespace teamssd.Data.Entities
 
         public bool IsDeleted { get; set; }
 
+
         public virtual ICollection<View> ViewedNews { get; set; }
+        public virtual ICollection<InterestNews> InterestNews { get; set; }
+        public virtual ICollection<RelevantNews> RelevantNews { get; set; }
+        public virtual ICollection<UsefulNews> UsefulNews { get; set; }
+
         public virtual ICollection<Chanel> Chanels { get; set; }
 
         public virtual ICollection<Follower> FollowedChanels { get; set; }

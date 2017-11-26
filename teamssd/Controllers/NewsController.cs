@@ -117,6 +117,76 @@ namespace teamssd.Controllers
             return RedirectToAction("Index");
         }
 
+
+        private void MarkViewed(int id)
+        {
+            var viewed = Db.Views.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
+            if (!viewed)
+            {
+                var view = new View
+                {
+                    NewsId = id,
+                    OwnerId = CurrentUser.Id
+                };
+
+                Db.Views.Add(view);
+                Db.SaveChanges();
+
+                MarkViewed(id);
+            }
+        }
+
+        private void MarkInterest(int id)
+        {
+            var isInterest = Db.InterestNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
+            if (!isInterest)
+            {
+                var interest = new InterestNews()
+                {
+                    NewsId = id,
+                    OwnerId = CurrentUser.Id
+                };
+
+                Db.InterestNews.Add(interest);
+                Db.SaveChanges();
+
+                MarkViewed(id);
+            }
+        }
+        private void MarkRelevant(int id)
+        {
+            var isRelevant = Db.RelevantNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
+            if (!isRelevant)
+            {
+                var relevant = new RelevantNews()
+                {
+                    NewsId = id,
+                    OwnerId = CurrentUser.Id
+                };
+
+                Db.RelevantNews.Add(relevant);
+                Db.SaveChanges();
+
+                MarkViewed(id);
+            }
+        }
+
+        private void MarkUseful(int id)
+        {
+            var isUseful = Db.UsefulNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
+            if (!isUseful)
+            {
+                var useful = new UsefulNews()
+                {
+                    NewsId = id,
+                    OwnerId = CurrentUser.Id
+                };
+
+                Db.UsefulNews.Add(useful);
+                Db.SaveChanges();
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
