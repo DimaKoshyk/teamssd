@@ -8,9 +8,9 @@ namespace teamssd.Models
     {
         public IList<Chanel> Chanels { get; set; }
 
-        public IList<News> NewsOfFirstChanel { get; set; }
-        //public IList<NewsDto> DashboardNews { get; set; }
+        public IList<News> News { get; set; }
 
+        //public IList<NewsDto> DashboardNews { get; set; }
         //public IList<RecommendChanel> RecommendChanels { get; set; }
     }
 }
