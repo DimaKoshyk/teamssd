@@ -223,6 +223,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\teamssd.mdf" />
+    <Content Include="App_Data\teamssd_log.ldf">
+      <DependentUpon>teamssd.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-material-design.css" />
     <Content Include="Content\bootstrap-material-design.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -336,9 +340,7 @@
     <Content Include="Views\Home\InternalServerError500.cshtml" />
     <Content Include="Views\Home\NotFound404.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
