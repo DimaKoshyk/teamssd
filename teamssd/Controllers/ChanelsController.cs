@@ -20,13 +20,14 @@ namespace teamssd.Controllers
             var folowed = Db.Followers.Any(x => x.ChanelId == id && x.OwnerId == CurrentUser.Id);
             if (folowed)
             {
-                Chanel chanel = Db.Chanels.Find(id);
-                if (chanel != null)
+                Follower follower = Db.Followers.FirstOrDefault(x => x.ChanelId == id && CurrentUser.Id == x.OwnerId);
+                if (follower != null)
                 {
-                    Db.Chanels.Remove(chanel);
+                    Db.Followers.Remove(follower);
                     Db.SaveChanges();
                 }
-                folowed = false;
+                //folowed = false;
+                return RedirectToAction("FollowedChanels");
             }
             else
             {
@@ -37,10 +38,10 @@ namespace teamssd.Controllers
                 });
                 Db.SaveChanges();
 
-                folowed = true;
+                //folowed = true;
+                return RedirectToAction("SearchChanels");
             }
 
-            return Json(new {status = 1, follow = folowed });
         }
 
         public ActionResult MyChanels()
@@ -61,7 +62,7 @@ namespace teamssd.Controllers
         {
             ViewBag.SearchChanels = true;
             var chanels = Db.Chanels
-                .Where(x => x.OwnerId != CurrentUser.Id && x.Followers.All(y => y.OwnerId == CurrentUser.Id))
+                .Where(x => x.OwnerId != CurrentUser.Id && x.Followers.All(y => y.OwnerId != CurrentUser.Id))
                 .Include(c => c.Owner);
             return View("Index", chanels.ToList());
         }
