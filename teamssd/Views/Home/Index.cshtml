@@ -13,15 +13,18 @@
 }*@
 
     <div class="col-md-1">
-        @Html.DropDownList("ChanelId", null, "Усі канали", htmlAttributes: new {@class = "form-control"})
+        @using (Html.BeginForm())
+        {
+            @Html.DropDownList("ChanelId", null, "Усі канали", htmlAttributes: new {@class = "form-control"})
+        }
+       
     </div>
 
     <div class="col-md-11 ">
         <ul class="nav nav-pills ">
-
-            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="javascript:void(0)">Мої новини</a></li> @*<span class="badge">42</span>*@
-            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="javascript:void(0)">Стрічка новин</a></li>
-            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="javascript:void(0)">Переглянуті новини</a></li>
+            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="@Url.Action("MyNews", "Home")">Мої новини</a></li> @*<span class="badge">42</span>*@
+            <li class="@((ViewBag.News ?? false) ? "active" : "")"><a href="@Url.Action("News", "Home")">Стрічка новин</a></li>
+            <li class="@((ViewBag.ViewedNews ?? false) ? "active" : "")"><a href="@Url.Action("ViewedNews", "Home")">Переглянуті новини</a></li>
         </ul>
     </div>
 </div>
@@ -42,7 +45,7 @@
         </div>
     </div>*@
     <div class="col-md-12" id="newsList">
-        @Html.Partial("_ListNews", Model.NewsOfFirstChanel.ToList())
+        @Html.Partial("_ListNews", Model.News.ToList())
     </div>
 </div>
 

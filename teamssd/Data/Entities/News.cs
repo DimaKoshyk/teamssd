@@ -9,10 +9,10 @@ namespace teamssd.Data.Entities
         public DateTime DateTime { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
-        public string Img { get; set; }
-        public string Video { get; set; }
-        public string UrlRef { get; set; }
 
+        //public string Img { get; set; }
+        //public string Video { get; set; }
+        //public string UrlRef { get; set; }
         //public string OwnerId { get; set; }
         //public virtual ApplicationUser Owner { get; set; }
 
@@ -22,7 +22,7 @@ namespace teamssd.Data.Entities
 
         public int ViewsCount { get; set; }
 
-        public int Rating { get; set; }
+        public int Rating => InterestsСount + RelevantsСount + UsefulsСount;
 
 
         public int ChanelId { get; set; }

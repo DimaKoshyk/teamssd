@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using teamssd.Data.Entities;
+using teamssd.Data.Enum;
 
 namespace teamssd.Data
 {
@@ -51,6 +53,8 @@ namespace teamssd.Data
         private static void Init(ApplicationDbContext context)
         {
             InitUsers(context);
+            InitChanels(context);
+            InitNews(context);
         }
 
         public static void InitUsers(ApplicationDbContext context)
@@ -72,6 +76,7 @@ namespace teamssd.Data
                     Email = email,
                     UserName = email,
                     EmailConfirmed = true,
+                    
                 };
 
                 if (profile[1] == "Bond")
@@ -86,6 +91,89 @@ namespace teamssd.Data
             }
             context.SaveChanges();
         }
+
+        public static void InitChanels(ApplicationDbContext context)
+        {
+            var users = context.Users;
+            foreach (var user in users)
+            {
+                context.Chanels.Add(new Chanel
+                {
+                    OwnerId = user.Id,
+                    ChanelType = ChanelType.NewsDay,
+                    Followers = users.Where(x => x.Id != user.Id).Select(x => new Follower { OwnerId = x.Id }).ToList(),
+                    Name = "Chanel of " + user.FirstName
+                });
+
+                context.SaveChanges();
+            }
+            
+        }
+
+        public static void InitNews(ApplicationDbContext context)
+        {
+            var chanels = context.Chanels;
+            var users = context.Users;
+            foreach (var chanel in chanels)
+            {
+                context.Newses.Add(new News
+                {
+                    ChanelId = chanel.Id,
+                    DateTime = DateTime.Now,
+                    Text = "News of " + chanel.Name,
+                    InterestNews = users.Where(x => x.Id != chanel.OwnerId).Take(1).Select(x => new InterestNews
+                    {
+                        OwnerId = x.Id
+                    }).ToList(),
+                    Viewers = users.Where(x => x.Id != chanel.OwnerId).Take(1).Select(x => new View()
+                    {
+                        OwnerId = x.Id
+                    }).ToList(),
+                });
+
+                context.Newses.Add(new News
+                {
+                    ChanelId = chanel.Id,
+                    DateTime = DateTime.Now,
+                    Text = "News of " + chanel.Name,
+                    RelevantNews = users.Where(x => x.Id != chanel.OwnerId).Skip(2).Take(2).Select(x => new RelevantNews
+                    {
+                        OwnerId = x.Id
+                    }).ToList(),
+                    Viewers = users.Where(x => x.Id != chanel.OwnerId).Skip(2).Take(2).Select(x => new View()
+                    {
+                        OwnerId = x.Id
+                    }).ToList(),
+                });
+
+                context.SaveChanges();
+            }
+
+        }
+
+        public static void UpdateCounts(ApplicationDbContext context)
+        {
+            var listOfNews = context.Newses;
+            foreach (var news in listOfNews)
+            {
+                if (news != null)
+                {
+                    var countViews = news.Viewers.Count;
+                    var countInterests = news.InterestNews.Count;
+                    var countRelevants = news.RelevantNews.Count;
+                    var countUsefuls = news.UsefulNews.Count;
+
+                    news.ViewsCount = countViews;
+                    news.InterestsСount = countInterests;
+                    news.RelevantsСount = countRelevants;
+                    news.UsefulsСount = countUsefuls;
+
+                    //news.Rating = countViews + countInterests + countRelevants + countUsefuls;
+                    context.SaveChanges();
+                }
+            }
+        }
+
         private class UserHelper
         {
             public UserHelper(ApplicationDbContext context)

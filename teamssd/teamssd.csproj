@@ -331,6 +331,8 @@
     <Content Include="Views\Shared\_ListChanels.cshtml" />
     <Content Include="Views\Shared\_ListNews.cshtml" />
     <Content Include="Views\Shared\_News.cshtml" />
+    <Content Include="Views\Home\InternalServerError500.cshtml" />
+    <Content Include="Views\Home\NotFound404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
