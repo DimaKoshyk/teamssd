@@ -13,6 +13,8 @@ namespace teamssd.Controllers
     public class ChanelsController : GeneralController
     {
 
+        
+
         public ActionResult Follow(int id)
         {
             var folowed = Db.Followers.Any(x => x.ChanelId == id && x.OwnerId == CurrentUser.Id);
@@ -39,6 +41,29 @@ namespace teamssd.Controllers
             }
 
             return Json(new {status = 1, follow = folowed });
+        }
+
+        public ActionResult MyChanels()
+        {
+            ViewBag.MyChanels = true;
+            var chanels = Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id).Include(c => c.Owner);
+            return View("Index", chanels.ToList());
+        }
+
+        public ActionResult FollowedChanels()
+        {
+            ViewBag.FollowedChanels = true;
+            var chanels = Db.Chanels.Where(x => x.Followers.Any(y => y.OwnerId == CurrentUser.Id)).Include(c => c.Owner);
+            return View("Index", chanels.ToList());
+        }
+
+        public ActionResult SearchChanels()
+        {
+            ViewBag.SearchChanels = true;
+            var chanels = Db.Chanels
+                .Where(x => x.OwnerId != CurrentUser.Id && x.Followers.All(y => y.OwnerId == CurrentUser.Id))
+                .Include(c => c.Owner);
+            return View("Index", chanels.ToList());
         }
 
         // GET: Chanels
