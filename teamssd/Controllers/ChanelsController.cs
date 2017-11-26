@@ -13,6 +13,34 @@ namespace teamssd.Controllers
     public class ChanelsController : GeneralController
     {
 
+        public ActionResult Follow(int id)
+        {
+            var folowed = Db.Followers.Any(x => x.ChanelId == id && x.OwnerId == CurrentUser.Id);
+            if (folowed)
+            {
+                Chanel chanel = Db.Chanels.Find(id);
+                if (chanel != null)
+                {
+                    Db.Chanels.Remove(chanel);
+                    Db.SaveChanges();
+                }
+                folowed = false;
+            }
+            else
+            {
+                Db.Followers.Add(new Follower
+                {
+                    ChanelId = id,
+                    OwnerId = CurrentUser.Id
+                });
+                Db.SaveChanges();
+
+                folowed = true;
+            }
+
+            return Json(new {status = 1, follow = folowed });
+        }
+
         // GET: Chanels
         public ActionResult Index()
         {

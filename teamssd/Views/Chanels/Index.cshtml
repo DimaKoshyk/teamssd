@@ -4,9 +4,21 @@
     ViewBag.Title = "Канали";
 }
 
-<div class="" style=" background-color: #4267b2; padding: 15px 15px;color: white; border-radius: 3px; margin-bottom: 15px;">
+@*<div class="" style="background-color: #4267b2; padding: 15px 15px;color: white; border-radius: 3px; margin-bottom: 15px;">
     <h3 class="panel-title">Канали</h3>
+</div>*@
+
+<div class="row panel-body">
+   
+    <div class="col-md-11 ">
+        <ul class="nav nav-pills ">
+            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="@Url.Action("MyNews", "Home")">Мої новини</a></li> @*<span class="badge">42</span>*@
+            <li class="@((ViewBag.News ?? false) ? "active" : "")"><a href="@Url.Action("News", "Home")">Стрічка новин</a></li>
+            @*<li class="@((ViewBag.ViewedNews ?? false) ? "active" : "")"><a href="@Url.Action("ViewedNews", "Home")">Переглянуті новини</a></li>*@
+        </ul>
+    </div>
 </div>
+
 <div class="panel panel-primary">
     <div class="panel-body">
         <div class="row center">
