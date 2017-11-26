@@ -218,7 +218,6 @@ C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\Microsoft.AspNet.Identity.Owin.x
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.dll
 C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.pdb
-C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\bin\teamssd.dll.config
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\bin\teamssd.dll
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\bin\teamssd.pdb
@@ -312,4 +311,4 @@ C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\bin\Microsoft.AspNet.Ident
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\obj\Debug\teamssd.dll
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\obj\Debug\teamssd.pdb
 C:\Users\Office\Source\Repos\NewRepo\teamsssd\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache
-C:\Users\kosh\Source\Repos\teamssd2\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache
+C:\Users\kosh\documents\visual studio 2015\Projects\teamssd\teamssd\obj\Debug\teamssd.csprojResolveAssemblyReference.cache

@@ -7,18 +7,54 @@ using teamssd.Models;
 
 namespace teamssd.Controllers
 {
+    public class NewsFilter
+    {
+        public int? ChanelId { get; set; }
+
+
+    }
+
     public class HomeController : GeneralController
     {
         public ActionResult Index()
         {
+            //ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name", );
+
             var model = new DashboardViewModels();
 
             model.Chanels = CurrentUser.Chanels.ToList();
             var firstChanel = model.Chanels.FirstOrDefault();
             model.NewsOfFirstChanel = firstChanel?.News.ToList() ?? new List<News>();
 
-            return View(model);
+
+
+            return View("Index", model);
         }
+
+        public ActionResult MyNews()
+        {
+            //ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name", );
+
+            var model = new DashboardViewModels();
+
+            //model.Chanels = CurrentUser.Chanels.ToList();
+            //var firstChanel = model.Chanels.FirstOrDefault();
+            //model.NewsOfFirstChanel = firstChanel?.News.ToList() ?? new List<News>();
+
+
+
+            return View("Index", model);
+        }
+
+        //public ActionResult News()
+        //{
+
+        //}
+
+        //public ActionResult ViewedNews()
+        //{
+        //    In
+        //}
 
         public ActionResult About()
         {

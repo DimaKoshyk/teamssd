@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -49,6 +50,7 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
+                news.DateTime = DateTime.Now;
                 Db.Newses.Add(news);
                 Db.SaveChanges();
                 return RedirectToAction("Index");
@@ -118,6 +120,23 @@ namespace teamssd.Controllers
         }
 
 
+        private void RecountNews(int id)
+        {
+            var news = Db.Newses.Find(id);
+            if (news != null)
+            {
+                var countViews = news.Viewers.Count;
+                var countInterests = news.InterestNews.Count;
+                var countRelevants = news.RelevantNews.Count;
+                var countUsefuls = news.UsefulNews.Count;
+
+                news.ViewsCount = countViews;
+                news.InterestsСount = countInterests;
+                news.RelevantsСount = countRelevants;
+                news.UsefulsСount = countUsefuls;
+            }
+        }
+
         private void MarkViewed(int id)
         {
             var viewed = Db.Views.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
@@ -129,14 +148,18 @@ namespace teamssd.Controllers
                     OwnerId = CurrentUser.Id
                 };
 
+
                 Db.Views.Add(view);
                 Db.SaveChanges();
 
                 MarkViewed(id);
             }
+
+            RecountNews(id);
         }
 
-        private void MarkInterest(int id)
+        [HttpPost]
+        public ActionResult MarkInterest(int id)
         {
             var isInterest = Db.InterestNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
             if (!isInterest)
@@ -152,8 +175,12 @@ namespace teamssd.Controllers
 
                 MarkViewed(id);
             }
+
+            return Json(new { status = 1 });
         }
-        private void MarkRelevant(int id)
+
+        [HttpPost]
+        public ActionResult MarkRelevant(int id)
         {
             var isRelevant = Db.RelevantNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
             if (!isRelevant)
@@ -169,9 +196,13 @@ namespace teamssd.Controllers
 
                 MarkViewed(id);
             }
+
+            return Json(new { status = 1 });
         }
 
-        private void MarkUseful(int id)
+
+        [HttpPost]
+        public ActionResult MarkUseful(int id)
         {
             var isUseful = Db.UsefulNews.Any(x => x.NewsId == id && x.OwnerId == CurrentUser.Id);
             if (!isUseful)
@@ -185,6 +216,8 @@ namespace teamssd.Controllers
                 Db.UsefulNews.Add(useful);
                 Db.SaveChanges();
             }
+
+            return Json(new {status = 1});
         }
 
         protected override void Dispose(bool disposing)

@@ -8,9 +8,11 @@
             <h2>@news.Title</h2>
 
             <p>@news.Text</p>
-
-            <p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a>
-            </p>
+            <button id="newsInterest_@(news.Id)" onclick="actionInterest('@(news.Id)')" class="btn btn-raised btn-primary">Цікавить</button>
+            <button id="newsRelevant_@(news.Id)" onclick="actionRelevant('@(news.Id)')" class="btn btn-raised btn-primary">Актуально</button>
+            <button id="newsUseful_@(news.Id)" onclick="actionUseful('@(news.Id)')" class="btn btn-raised btn-primary">Корисно</button>
+            @*<p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a>
+            </p>*@
         </div>
     }
 }
