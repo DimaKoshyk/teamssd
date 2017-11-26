@@ -33,10 +33,5 @@ namespace teamssd.Data.Entities
         public virtual ICollection<InterestNews> InterestNews { get; set; }
         public virtual ICollection<RelevantNews> RelevantNews { get; set; }
         public virtual ICollection<UsefulNews> UsefulNews { get; set; }
-
-        public News()
-        {
-            DateTime = new DateTime();
-        }
     }
 }
