@@ -10,10 +10,10 @@
     </div>
     
     <div class="container">
-        <section id="loginForm">
+        <section id="loginForm" style="margin-right: 50px;">
 
 
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin",style= "margin-right: 430px;", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin",@*style= "margin-right: 495px;",*@ role = "form" }))
             {
                 @*<h2 class="form-signin-heading">Сторінка входу</h2>*@
                 @Html.AntiForgeryToken()
