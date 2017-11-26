@@ -11,10 +11,10 @@
 <div class="row panel-body">
    
     <div class="col-md-11 ">
-        <ul class="nav nav-pills ">
-            <li class="@((ViewBag.MyNews ?? false) ? "active" : "")"><a href="@Url.Action("MyNews", "Home")">Мої новини</a></li> @*<span class="badge">42</span>*@
-            <li class="@((ViewBag.News ?? false) ? "active" : "")"><a href="@Url.Action("News", "Home")">Стрічка новин</a></li>
-            @*<li class="@((ViewBag.ViewedNews ?? false) ? "active" : "")"><a href="@Url.Action("ViewedNews", "Home")">Переглянуті новини</a></li>*@
+        <ul class="nav nav-pills">
+            <li class="@((ViewBag.MyChanels ?? false) ? "active" : "")"><a href="@Url.Action("MyChanels", "Chanels")">Мої канали</a></li> @*<span class="badge">42</span>*@
+            <li class="@((ViewBag.FollowedChanels ?? false) ? "active" : "")"><a href="@Url.Action("FollowedChanels", "Chanels")">Канали</a></li>
+            <li class="@((ViewBag.SearchChanels ?? false) ? "active" : "")"><a href="@Url.Action("SearchChanels", "Chanels")">Пошук каналів</a></li>
         </ul>
     </div>
 </div>
@@ -75,18 +75,21 @@
             }
         </div>
 
-        <div class="col-lg-3 col-md-3 text-panel">
+        <div class="col-lg-4 col-md-4 text-panel">
             @foreach (var item in Model)
             {
                 <div class="row" style="height: 80px; padding: 7px 0;font-size: 16px;">
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Редагувати", "Edit", new {id = item.Id})
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Деталі", "Details", new {id = item.Id})
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Видалити", "Delete", new {id = item.Id})
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
+                        @Html.ActionLink("Новини каналу", "Delete", new {id = item.Id})
                     </div>
                     @*<div class="col-lg-4 col-md-4 col-sm-4 text-align: center">
                         <a href="@Url.Action("Delete", "Chanels", new {id = item.Id, @class ="" })" role="button" id="">
