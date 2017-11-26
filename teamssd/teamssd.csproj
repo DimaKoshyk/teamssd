@@ -231,6 +231,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\eror_page_404.png" />
+    <Content Include="Content\Images\eror_page_500_1.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\jquery.dropdown.css" />
     <Content Include="Content\ripples.css" />
