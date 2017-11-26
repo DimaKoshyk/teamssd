@@ -13,6 +13,9 @@
             <button id="newsUseful_@(news.Id)" onclick="actionUseful('@(news.Id)')" class="btn btn-raised btn-primary">Корисно</button>
             @*<p class="text-right"><a class="btn btn-primary btn-lg">читати більше</a>
             </p>*@
+            <div class="pull-right" style="font-size: 15px; padding: 15px;">
+                @news.DateTime
+            </div>
         </div>
     }
 }
