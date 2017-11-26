@@ -34,5 +34,16 @@ namespace teamssd.Controllers
 
             return View();
         }
+
+        public ViewResult NotFound404()
+        {
+            Response.StatusCode = 404;
+            return View();
+        }
+
+        public ViewResult InternalServerError500()
+        {
+            return View();
+        }
     }
 }

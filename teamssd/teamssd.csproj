@@ -225,6 +225,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\404.png" />
+    <Content Include="Content\Images\505.png" />
+    <Content Include="Content\Images\eror_page_404.png" />
+    <Content Include="Content\Images\eror_page_500_1.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\ripples.css" />
     <Content Include="Content\ripples.min.css" />
@@ -322,6 +326,8 @@
     <Content Include="Scripts\ripples.min.js.map" />
     <Content Include="Views\Shared\_ListChanels.cshtml" />
     <Content Include="Views\Shared\_ListNews.cshtml" />
+    <Content Include="Views\Home\NotFound404.cshtml" />
+    <Content Include="Views\Home\InternalServerError500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
