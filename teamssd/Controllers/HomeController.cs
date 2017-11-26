@@ -55,7 +55,7 @@ namespace teamssd.Controllers
                 .ToList();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? chanelId)
         {
             //ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name", );
             //var model = new DashboardViewModels();
@@ -64,12 +64,19 @@ namespace teamssd.Controllers
             //var firstChanel = model.Chanels.FirstOrDefault();
             //model.NewsOfFirstChanel = firstChanel?.News.ToList() ?? new List<News>();
 
-            return News();
+            return News(chanelId);
         }
 
-        public ActionResult MyNews()
+        public ActionResult MyNews(int? chanelId)
         {
-            ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name");
+            if (chanelId != null)
+            {
+                ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name", chanelId);
+            }
+            else
+            {
+                ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.OwnerId == CurrentUser.Id), "Id", "Name");
+            }
             ViewBag.MyNews = true;
 
             var model = new DashboardViewModels();
@@ -78,10 +85,18 @@ namespace teamssd.Controllers
             return View("Index", model);
         }
 
-        public ActionResult News()
+        public ActionResult News(int? chanelId)
         {
             ViewBag.News = true;
-            ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.Followers.Any(y => y.OwnerId == CurrentUser.Id)), "Id", "Name");
+            if (chanelId != null)
+            {
+                ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.Followers.Any(y => y.OwnerId == CurrentUser.Id)), "Id", "Name", chanelId);
+
+            }
+            else
+            {
+                ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.Followers.Any(y => y.OwnerId == CurrentUser.Id)), "Id", "Name");
+            }
 
             var model = new DashboardViewModels();
             model.News = GetNews(false, null, 0);
