@@ -75,18 +75,21 @@
             }
         </div>
 
-        <div class="col-lg-3 col-md-3 text-panel">
+        <div class="col-lg-4 col-md-4 text-panel">
             @foreach (var item in Model)
             {
                 <div class="row" style="height: 80px; padding: 7px 0;font-size: 16px;">
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Редагувати", "Edit", new {id = item.Id})
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Деталі", "Details", new {id = item.Id})
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4" style="text-align: center">
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
                         @Html.ActionLink("Видалити", "Delete", new {id = item.Id})
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3" style="text-align: center">
+                        @Html.ActionLink("Новини каналу", "Delete", new {id = item.Id})
                     </div>
                     @*<div class="col-lg-4 col-md-4 col-sm-4 text-align: center">
                         <a href="@Url.Action("Delete", "Chanels", new {id = item.Id, @class ="" })" role="button" id="">

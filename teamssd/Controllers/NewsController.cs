@@ -37,7 +37,8 @@ namespace teamssd.Controllers
         // GET: News/Create
         public ActionResult Create()
         {
-            ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name");
+            var chanels = CurrentUser.Chanels.ToList();
+            ViewBag.ChanelId = new SelectList(chanels, "Id", "Name");
             return View();
         }
 
