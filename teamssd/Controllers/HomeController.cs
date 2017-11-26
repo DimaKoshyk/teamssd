@@ -18,6 +18,8 @@ namespace teamssd.Controllers
     public class HomeController : GeneralController
     {
 
+        
+
         private int GetCountOfNews(int? page)
         {
             if (page == null || page.Value < 0)
@@ -28,7 +30,7 @@ namespace teamssd.Controllers
             return 10 * page.Value;
         }
 
-        private IList<News> GetNews(bool isMy, int? chanelId, int? page)
+        private IList<News> GetNews(bool isMy, bool viewed, int? chanelId, int? page)
         {
             IList<News> news = Db.Newses.ToList();
 
@@ -36,9 +38,14 @@ namespace teamssd.Controllers
             {
                 news = news.Where(x => x.Chanel.OwnerId == CurrentUser.Id).ToList();
             }
-            else
+            else if (viewed)
             {
-                news = news.Where(x => x.Chanel.Followers.Any(y => y.OwnerId == CurrentUser.Id)).ToList();
+                news = news.Where(x => x.Chanel.Followers.Any(y => y.OwnerId == CurrentUser.Id) && x.Viewers.Any(y => y.OwnerId == CurrentUser.Id)).ToList();
+
+            }
+            else 
+            {
+                news = news.Where(x => x.Chanel.Followers.Any(y => y.OwnerId == CurrentUser.Id) && x.Viewers.All(y => y.OwnerId != CurrentUser.Id)).ToList();
             }
 
             if (chanelId.HasValue)
@@ -51,6 +58,7 @@ namespace teamssd.Controllers
             return news
                 //.OrderByDescending(x => (x.InterestsСount + x.RelevantsСount + x.UsefulsСount) / (DbFunctions.DiffHours(DateTime.Now, x.DateTime) + 1))
                 .OrderByDescending(x => (x.InterestsСount + x.RelevantsСount + x.UsefulsСount) / ((DateTime.Now - x.DateTime).TotalHours + 1))
+                .ThenBy(x => x.DateTime)
                 .Skip(skipNews)
                 .Take(10)
                 .ToList();
@@ -81,7 +89,7 @@ namespace teamssd.Controllers
             ViewBag.MyNews = true;
 
             var model = new DashboardViewModels();
-            model.News = GetNews(true, chanelId, 0);
+            model.News = GetNews(true, false, chanelId, 0);
 
             return View("Index", model);
         }
@@ -100,7 +108,7 @@ namespace teamssd.Controllers
             }
 
             var model = new DashboardViewModels();
-            model.News = GetNews(false, null, 0);
+            model.News = GetNews(false, false, chanelId, 0);
 
             return View("Index", model);
         }
@@ -110,8 +118,11 @@ namespace teamssd.Controllers
             ViewBag.ViewedNews = true;
             ViewBag.ChanelId = new SelectList(Db.Chanels.Where(x => x.Followers.Any(y => y.OwnerId == CurrentUser.Id)), "Id", "Name");
 
-            return NotFound404();
-            //return View("Index", model);
+            var model = new DashboardViewModels();
+            model.News = GetNews(false, true, null, 0);
+
+            //return NotFound404();
+            return View("Index", model);
         }
 
         public ActionResult About()

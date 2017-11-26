@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ChanelType, htmlAttributes: new { @class = "col-md-12" })
+                    @Html.Label("Тип каналу", htmlAttributes: new { @class = "col-md-12" })
                     <div class="col-md-12">
                         @Html.EnumDropDownListFor(model => model.ChanelType, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ChanelType, "", new { @class = "text-danger" })
@@ -62,7 +62,7 @@
                     </div>
                 </div>*@
                     <div class="form-group">
-                        @Html.LabelFor(model => model.OwnerId, "OwnerId", htmlAttributes: new { @class = "col-md-12" })
+                        @Html.Label("Власник", htmlAttributes: new { @class = "col-md-12" })
                         <div class="col-md-12">
                             @Html.DropDownList("OwnerId", null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.OwnerId, "", new { @class = "text-danger" })

@@ -54,7 +54,7 @@ namespace teamssd.Controllers
                 news.DateTime = DateTime.Now;
                 Db.Newses.Add(news);
                 Db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyNews", "Home", new { chanelId = news.ChanelId });
             }
 
             ViewBag.ChanelId = new SelectList(Db.Chanels, "Id", "Name", news.ChanelId);
@@ -86,7 +86,15 @@ namespace teamssd.Controllers
         {
             if (ModelState.IsValid)
             {
-                Db.Entry(news).State = EntityState.Modified;
+                var newsEnt = Db.Newses.Find(news.Id);
+                if (newsEnt != null)
+                {
+                    newsEnt.Title = news.Title;
+                    newsEnt.Text = news.Text;
+                    newsEnt.ChanelId = news.ChanelId;
+                }
+                
+                Db.Entry(newsEnt).State = EntityState.Modified;
                 Db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -120,6 +128,14 @@ namespace teamssd.Controllers
             return RedirectToAction("Index");
         }
 
+        public void Recount()
+        {
+            var news = Db.Newses.ToList();
+            foreach (var oneNews in news)
+            {
+                RecountNews(oneNews.Id);
+            }
+        }
 
         private void RecountNews(int id)
         {
@@ -135,6 +151,9 @@ namespace teamssd.Controllers
                 news.InterestsСount = countInterests;
                 news.RelevantsСount = countRelevants;
                 news.UsefulsСount = countUsefuls;
+
+                Db.Entry(news).State = EntityState.Modified;
+                Db.SaveChanges();
             }
         }
 
@@ -153,7 +172,6 @@ namespace teamssd.Controllers
                 Db.Views.Add(view);
                 Db.SaveChanges();
 
-                MarkViewed(id);
             }
 
             RecountNews(id);
@@ -216,6 +234,8 @@ namespace teamssd.Controllers
 
                 Db.UsefulNews.Add(useful);
                 Db.SaveChanges();
+
+                MarkViewed(id);
             }
 
             return Json(new {status = 1});

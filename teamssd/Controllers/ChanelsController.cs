@@ -70,8 +70,10 @@ namespace teamssd.Controllers
         // GET: Chanels
         public ActionResult Index()
         {
-            var chanels = Db.Chanels.Include(c => c.Owner);
-            return View(chanels.ToList());
+            //var chanels = Db.Chanels.Include(c => c.Owner);
+            //return View(chanels.ToList());
+
+            return FollowedChanels();
         }
 
         // GET: Chanels/Details/5

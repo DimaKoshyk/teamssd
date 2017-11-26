@@ -61,5 +61,10 @@
                         $("#newsList").html(data);
                     }
                 });
-            });
+        });
+
+    $(document).on("change", "#ChanelId", function() {
+        var id = $(this).val();
+        window.location.href = location.protocol + '//' + location.host + location.pathname + '?chanelId='+id;
+    })
 </script>

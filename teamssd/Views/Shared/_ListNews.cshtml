@@ -8,7 +8,7 @@
             <h2>@news.Title</h2>
 
             <p>@news.Text</p>
-            @if (ViewBag.MyNews ?? false)
+            @if ((ViewBag.MyNews ?? false) || (ViewBag.ViewedNews ?? false))
             {
                 <label style="margin-right: 10px" class="">Цікавить <span class="badge">@news.InterestsСount</span></label>
                 <label style="margin-right: 10px" class="">Актуально <span class="badge">@news.RelevantsСount</span></label>
